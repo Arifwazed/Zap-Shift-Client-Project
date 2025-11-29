@@ -4,6 +4,7 @@ import { GrDeliver } from 'react-icons/gr';
 import { MdOutlineDirectionsBike, MdOutlinePayment } from 'react-icons/md';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../hooks/useRole';
+import { FaTasks } from 'react-icons/fa';
 
 const DashboardLayout = () => {
     const {role} = useRole();
@@ -51,7 +52,7 @@ const DashboardLayout = () => {
                         <span className="is-drawer-close:hidden">Payment History</span>
                         </NavLink>
                     </li>
-
+                    {/* only admin related links */}
                    {
                         role === 'admin' && 
                         <>
@@ -73,6 +74,18 @@ const DashboardLayout = () => {
                                 <NavLink to="/dashboard/users-management" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Users Management">
                                 <FaUsers />
                                 <span className="is-drawer-close:hidden">Users Management</span>
+                                </NavLink>
+                            </li>
+                        </>
+                   }
+
+                   {/* only rider related links */}
+                   {
+                        role === 'rider' && <>
+                            <li>
+                                <NavLink to="/dashboard/assigned-deliveries" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Assigned Deliveries">
+                                <FaTasks />
+                                <span className="is-drawer-close:hidden">Assigned Deliveries</span>
                                 </NavLink>
                             </li>
                         </>
