@@ -68,19 +68,13 @@ const SendParcel = () => {
           console.log("after saving parcel:", res.data);
           if (res.data.insertedId) {
             Swal.fire({
-              title: "Added!",
-              text: "Your parcel has been added.",
+              title: "Your parcel has been added",
+              text: "Added!",
               icon: "success",
             });
             navigate('/dashboard/my-parcels')
           }
         });
-
-        // Swal.fire({
-        // title: "Added!",
-        // text: "Your parcel has been added.",
-        // icon: "success"
-        // });
       }
     });
   };

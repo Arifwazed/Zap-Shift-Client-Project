@@ -45,6 +45,7 @@ const MyParcels = () => {
       }
     });
   };
+  
   return (
     <div>
       <h1>My Parcels: {parcels.length}</h1>
@@ -74,7 +75,9 @@ const MyParcels = () => {
                         parcel.paymentStatus === 'paid' ? <span className="text-green-500 font-bold ">Paid</span> : <Link to={`/dashboard/payment/${parcel._id}`} className="btn btn-primary btn-sm text-black">Pay</Link>
                     }
                 </td>
-                <td>{parcel.trackingId}</td>
+                <td>
+                  <Link to={`/parcel-track/${parcel.trackingId}`} className="text-blue-500">{parcel.trackingId}</Link>
+                </td>
                 <td>{parcel.deliveryStatus}</td>
                 <td className="flex gap-3">
                   <button className="btn btn-square hover:bg-primary">
