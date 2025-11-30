@@ -20,6 +20,7 @@ import AdminRoute from "./AdminRoute";
 import AssignRider from "../pages/dashboard/AssignRider/AssignRider";
 import AssignedDeliveries from "../pages/dashboard/AssignedDeliveries/AssignedDeliveries";
 import RiderRoute from "./RiderRoute";
+import CompletedDeliveries from "../pages/dashboard/CompletedDeliveries/CompletedDeliveries";
 
 export const router = createBrowserRouter([
   {
@@ -118,7 +119,13 @@ export const router = createBrowserRouter([
         element: <RiderRoute>
           <AssignedDeliveries></AssignedDeliveries>
         </RiderRoute>
-      }
+      },
+      {
+        path: 'completed-deliveries',
+        element: <RiderRoute>
+          <CompletedDeliveries></CompletedDeliveries>
+        </RiderRoute>
+      },
     ]
   }
 ]);
