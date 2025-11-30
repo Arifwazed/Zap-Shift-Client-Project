@@ -17,12 +17,16 @@ const AssignedDeliveries = () => {
     })
 
     const handleDeliveryUpdateStatus = (parcel,status) => {
-        console.log('parcel and status',parcel,status)
-        const statusInfo = {deliveryStatus: status};
+        // console.log('parcel and status',parcel,status)
+        const statusInfo = {
+            deliveryStatus: status, 
+            riderId: parcel.riderId,
+            trackingId: parcel.trackingId
+        };
         let message = `Parcel status is updated to ${status.split('_').join(' ')}`;
         axiosSecure.patch(`/parcels/${parcel._id}/status`,statusInfo)
         .then(res => {
-            console.log('success update:',res.data)
+            // console.log('success update:',res.data)
             if(res.data.modifiedCount){
                 refetch();
                 Swal.fire({
@@ -67,7 +71,7 @@ const AssignedDeliveries = () => {
                             </td>
                             <td>
                                 {
-                                    parcel.deliveryStatus !== 'parcel_pickedUp' ? <button onClick={()=> handleDeliveryUpdateStatus(parcel,'parcel_pickedUp')} className='btn btn-warning  text-black'>Mark as Picked Up</button> : <span className='bg-warning p-1 rounded-lg'>picked up</span>
+                                    parcel.deliveryStatus !== 'parcel_pickedUp' ? <button onClick={()=> handleDeliveryUpdateStatus(parcel,'parcel_picked_up')} className='btn btn-warning  text-black'>Mark as Picked Up</button> : <span className='bg-warning p-1 rounded-lg'>picked up</span>
                                 }
                                 
                                 <button onClick={()=> handleDeliveryUpdateStatus(parcel,'parcel_delivered')} className='btn btn-primary text-black ms-3'>Mark as Delivered</button>
