@@ -15,7 +15,7 @@ const ParcelTrack = () => {
         }
     })
     return (
-        <div>
+        <div className='py-5'>
             <h1 className='text-4xl font-semibold py-5'>Track your package: {trackingId}</h1>
             <p>Total logs: {trackings.length}</p>
 
@@ -23,13 +23,14 @@ const ParcelTrack = () => {
                 {
                     trackings.map((tracking,index) => 
                         <li key={tracking._id}>
+                            <hr className="bg-red-500"/>
                             <div className="timeline-start">{new Date(tracking.createdAt).toLocaleString()}</div>
                             <div className="timeline-middle">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
-                                className="h-5 w-5"
+                                className=" text-green-500 h-5 w-5"
                             >
                                 <path
                                 fillRule="evenodd"
@@ -41,7 +42,7 @@ const ParcelTrack = () => {
                             <div className="timeline-end timeline-box">
                                 <span className='text-base'>{tracking.details}</span>
                             </div>
-                            <hr />
+                            <hr className="bg-red-500"/>
                         </li>
                     )
                 }
